@@ -131,12 +131,15 @@ $(function() {
         });
 
         // Now we do our check with Jasmine and see if both feeds are indeed different.
-        it('new feed is being loaded', function(){
+        it('new feed is being loaded', function(done){
+
             loadFeed(2, function(){
-                feedTwo = $('.feed').html();
+                feedTwo = $('.feed').html();                
+                expect(feedOne).not.toEqual(feedTwo);
+
                 done();
-            })
-            expect(feedOne).not.toEqual(feedTwo);
+            });
+
         });
     });
 
