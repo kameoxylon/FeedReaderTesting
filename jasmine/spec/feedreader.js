@@ -38,7 +38,7 @@ $(function() {
         it('should have a defined URL', function() {
             for (var i = 0; i < allFeeds.length; i++){
             expect(allFeeds[i].url).toBeDefined();
-            expect(allFeeds[i].url).not.toBe(null);
+            expect(allFeeds[i].url).not.toBe('');
             }
         });
 
@@ -52,7 +52,7 @@ $(function() {
         it('should have a defined name', function() {
             for (var i = 0; i < allFeeds.length; i++){
             expect(allFeeds[i].name).toBeDefined();
-            expect(allFeeds[i].name).not.toBe(null);
+            expect(allFeeds[i].name).not.toBe('');
             }
         });
     });
@@ -128,15 +128,14 @@ $(function() {
                 feedOne = $('.feed').html();
                 done();
             });
-
-            loadFeed(2, function(){
-                feedTwo = $('.feed').html();
-                done();
-            })
         });
 
         // Now we do our check with Jasmine and see if both feeds are indeed different.
         it('new feed is being loaded', function(){
+            loadFeed(2, function(){
+                feedTwo = $('.feed').html();
+                done();
+            })
             expect(feedOne).not.toEqual(feedTwo);
         });
     });
